@@ -14,6 +14,13 @@ export const MainContent = styled.div`
     align-self: center;
   }
 
+  h2 {
+    font-size: 2rem;
+
+    margin: 3rem 0 2rem;
+    font-family: 'Poppins', sans-serif;
+  }
+
   form {
     display: flex;
     flex-direction: column;
@@ -38,46 +45,15 @@ export const MainContent = styled.div`
     }
   }
 
-  .create-room-button {
-    margin-top: 6rem;
-    height: 6rem;
+  p {
+    margin-top: 0.8rem;
 
-    img {
-      max-width: 20px;
-      margin-right: 1rem;
-    }
-  }
+    color: #737380;
+    font-size: 1.6rem;
 
-  .separator {
-    position: relative;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 1.8rem;
-    color: #a8a8b3;
-
-    margin: 2.4rem 0;
-
-    &::before {
-      margin-right: 16px;
-    }
-
-    &::after {
-      margin-left: 16px;
-    }
-
-    &::before,
-    &::after {
-      content: '';
-
-      flex: 1;
-      height: 1px;
-      background-color: #a8a8b3;
-
-      top: 0;
-      left: 0;
+    a {
+      display: block;
+      color: #e559f9;
     }
   }
 `;

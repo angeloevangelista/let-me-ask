@@ -3,14 +3,14 @@ import { IconType } from 'react-icons';
 
 import { Container } from './styles';
 
-interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   icon?: IconType;
   iconAlign?: 'left' | 'right';
   backgroundColor?: string;
   iconSize?: number;
-}
+};
 
-const Button: React.FC<IButtonProps> = ({
+const Button: React.FC<ButtonProps> = ({
   children,
   icon: Icon,
   iconAlign,

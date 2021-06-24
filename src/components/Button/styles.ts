@@ -1,12 +1,12 @@
 import { darken } from 'polished';
 import styled from 'styled-components';
 
-interface IContainerProps {
+type ContainerProps = {
   backgroundColor: string;
   iconAlign?: 'left' | 'right';
-}
+};
 
-export const Container = styled.button<IContainerProps>`
+export const Container = styled.button<ContainerProps>`
   height: 4rem;
   padding: 0 2.4rem;
 

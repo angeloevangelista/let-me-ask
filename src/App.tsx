@@ -1,14 +1,16 @@
-import { Home } from './pages/Home';
+import { Routes } from './routes';
+import { AuthContextProvider } from './contexts/AuthContext';
+
 import { GlobalStyle } from './styles/global';
 
-function App() {
+const App: React.FC = () => {
   return (
-    <>
-      <Home />
+    <AuthContextProvider>
+      <Routes />
 
       <GlobalStyle />
-    </>
+    </AuthContextProvider>
   );
-}
+};
 
 export default App;
