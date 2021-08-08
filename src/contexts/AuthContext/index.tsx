@@ -1,9 +1,9 @@
 import { createContext, useCallback, useEffect, useState } from 'react';
 
-import { AuthContextType, User } from './typings';
-import { convertFirebaseUser } from './functions/convertFirebaseUser';
-
+import { User } from '../../models/user';
+import { AuthContextType } from './typings/authContextType';
 import { auth, authProvider } from '../../services/firebase';
+import { convertFirebaseUser } from './functions/convertFirebaseUser';
 
 const AuthContext = createContext<AuthContextType>({} as AuthContextType);
 

@@ -1,18 +1,21 @@
-import React, { useCallback } from 'react';
+import React, { FormEvent, useCallback, useRef } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import logoImg from '../../assets/logo.svg';
 import googleIconImg from '../../assets/google-icon.svg';
 
 import { ERouteMap } from '../../routes';
-import { Button } from '../../components/Button';
-import { HomeLayout } from '../../layouts/HomeLayout';
 
 import { useAuth } from '../../hooks/useAuth';
+import { database, DatabaseRefs } from '../../services/firebase';
+
+import { Button } from '../../components/Button';
+import { HomeLayout } from '../../layouts/HomeLayout';
 
 import * as SC from './styles';
 
 const Home: React.FC = () => {
+  const codeInputRef = useRef<HTMLInputElement>(null);
   const history = useHistory();
   const { user, signInWithGoogle } = useAuth();
 
@@ -31,6 +34,22 @@ const Home: React.FC = () => {
     [history, signInWithGoogle, user],
   );
 
+  const handleJoinRoom = useCallback(async (event: FormEvent) => {
+    event.preventDefault();
+
+    const roomCode = codeInputRef.current?.value.trim();
+
+    if (!roomCode) return;
+
+    const roomRef = await database
+      .ref(`${DatabaseRefs.Rooms}/${roomCode}`)
+      .get();
+
+    if (!roomRef.exists()) return alert('Room does not exist.');
+
+    history.push(`${ERouteMap.Room}/${roomCode}`);
+  }, [history]);
+
   return (
     <HomeLayout>
       <SC.MainContent>
@@ -48,8 +67,12 @@ const Home: React.FC = () => {
 
         <div className="separator">Ou entre em uma sala</div>
 
-        <form>
-          <input type="text" placeholder="Digite o código da sala" />
+        <form onSubmit={handleJoinRoom}>
+          <input
+            type="text"
+            ref={codeInputRef}
+            placeholder="Digite o código da sala"
+          />
 
           <Button type="submit">Entrar na sala</Button>
         </form>

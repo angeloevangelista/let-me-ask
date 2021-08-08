@@ -1,6 +1,6 @@
 import firebase from 'firebase';
 
-import { User } from '../typings';
+import { User } from '../../../models/user';
 
 function convertFirebaseUser(firebaseUser: firebase.User): User {
   const { displayName, photoURL, uid } = firebaseUser;

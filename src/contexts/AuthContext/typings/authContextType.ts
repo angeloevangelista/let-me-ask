@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User } from "../../../models/user";
 
 type AuthContextType = {
   user: User | undefined;
